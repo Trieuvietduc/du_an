@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="" method="post">
+
+        <label for="">name</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label for="">email</label><br>
+        <input type="email" name="email" id="email"><br>
+        <label for="">trạng thái</label><br>
+        <input type="text" name="trangthai" id="trangthai"><br>
+        <label for="">trạng thái</label><br>
+        <select name="status" id="status">
+        </select><br>
+       
+        <button type="button" onclick="add()">add</button>
+    </form>
+    <script>
+        function status() {
+            var opt = {
+                url: "http://localhost:3000/roles",
+                method: "GET",
+            }
+            axios(opt)
+                .then(function (data) {
+                    console.log(data);
+                    data.data.forEach(function (iteam) {
+                        var status = document.querySelector('#status')
+                        var oput = `
+                        <option value="${iteam.id}">${iteam.name}</option>`
+                        status.innerHTML += oput;
+                    })
+                })
+        }
+        status();
+        function add() {
+            var a = document.querySelector('#name').value;
+            var b = document.querySelector('#email').value;
+            var d = document.querySelector('#trangthai').value;
+            var c = document.querySelector('#status').value;
+            var opt = {
+                url: "http://localhost:3000/users",
+                method: "POST",
+                data: {
+                    name: a,
+                    email: b,
+                    status: d,
+                    roles: c
+                }
+            }
+            axios(opt)
+                .then(function (data) {
+                    var array = [];
+                    array.push(data);
+                })
+                .then(() => location.reload());
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="" method="post" id="form-add" style="display: none">
+        <label for="">name</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label for="">email</label><br>
+        <input type="email" name="email" id="email"><br>
+        <label for="">trạng thái</label><br>
+        <input type="text" name="trangthai" id="trangthai"><br>
+        <label for="">trạng thái</label><br>
+        <select name="statu" id="statu">
+        </select><br>
+        <button type="button" onclick="add()">add</button>
+    </form>
+    <table border="1px" class="form">
+        <thead>
+            <tr>
+                <td>tên</td>
+                <td>email</td>
+                <td>trạng thái</td>
+                <td>role</td>
+                <td>chức nâng</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <form action="" method="post" id="form-edit" style="display: none">
+        <label for="">name</label><br>
+        <input type="text" name="name1" id="name1"><br>
+        <label for="">email</label><br>
+        <input type="email" name="email1" id="email1"><br>
+        <label for="">trạng thái</label><br>
+        <input type="text" name="trangthai1" id="trangthai1"><br>
+        <label for="">chức nâng</label><br>
+        <select name="status" id="status">
+        </select><br>
+        <button id="btn" type="button" onclick="sua()">edit</button>
+    </form>
+</body>
+<script>
+    // sau thời gian nhất định sẽ hiện ra form thêm
+    function ass(){
+        setTimeout(function() {
+            document.querySelector('#form-add').style.display = 'inline-block';
+        },3000)
+    }
+    ass();
+    // show ra tất cả dữ liệu
+    function all() {
+        var opt = {
+            url: 'http://localhost:3000/users?_expand=post',
+            method: 'GET',
+        };
+        axios(opt)
+            .then(function (data) {
+                data.data.forEach(function (item) {
+                    const tableUsers = document.querySelector('.form');
+                    const output =
+                        `<tr>
+            <td>${item.name}</td>
+            <td>${item.email}</td>
+            <td>${item.status}</td>
+            <td>${item.roles == 1 ? "Admin" : ""}${item.roles == 3 ? "Author" : ""}${item.roles == 2 ? "Member" : ""}?</td>
+            <td><button class="btn-edit btn btn-primary btn-sm" type="button" onclick="Edit(this,'${item.id}','${item.name}','${item.email}','${item.status}','${item.roles}')">Edit</button>|
+                <button onclick="DeleteRow(${item.id})"class="btn-del btn btn-danger">Del</button></td>
+        </tr>`;
+                    tableUsers.innerHTML += output;
+                });
+            })
+    }
+    all();
+    // xóa dữ liệu dựa theo id
+    function DeleteRow(id) {
+        var opt = {
+            url: "http://localhost:3000/users/" + id,
+            method: "DELETE"
+        };
+        axios(opt)
+            .then(() => location.reload());
+    }
+    // lấy dữ liệu để sửa
+    function Edit(eliment, id, name, email, status, roles) {
+        document.getElementById('form-edit').style.display = 'inline-block';
+        document.getElementById('form-add').style.display = 'none';
+        console.log(id, name, email, status);
+        var a = document.querySelector('#name1').value = name;
+        var b = document.querySelector('#email1').value = email;
+        var d = document.querySelector('#trangthai1').value = status;
+        var c = document.querySelector('#status').value = roles;
+        var btn = document.querySelector('#btn').setAttribute('onclick', 'sua(' + id + ')');
+        // show ra chức nâng theo id của chức nâng ban đầu chọn
+        function aaa() {
+            var opt = {
+                url: "http://localhost:3000/roles/" + roles,
+                method: "GET",
+            }
+            axios(opt)
+                .then(function (data) {
+                    console.log(data.data.name);
+                    var status = document.querySelector('#status')
+                    var oput = `
+                        <option value="${data.data.id}">${data.data.name}</option>`
+                    status.innerHTML += oput;
+
+                })
+
+        }
+        aaa();
+    }
+    function sua(id) {
+        var a = document.querySelector('#name1').value;
+        var b = document.querySelector('#email1').value;
+        var d = document.querySelector('#trangthai1').value;
+        var c = document.querySelector('#status').value;
+        if (a == "" || b == "" || c == "" || d == "") {
+            alert("bạn cần nhập đủ các trường");
+        } else {
+            document.getElementById('form-edit').style.display = 'none';
+            document.getElementById('form-add').style.display = 'inline-block';
+            var opt = {
+                url: "http://localhost:3000/users/" + id,
+                method: "put",
+                data: {
+                    name: a,
+                    email: b,
+                    status: d,
+                    roles: c,
+                }
+            };
+            axios(opt)
+                .then(() => location.reload());
+        }
+
+    }
+    // hiển thị tất cả các chức nâng
+    function status() {
+        var opt = {
+            url: "http://localhost:3000/roles",
+            method: "GET",
+        }
+        axios(opt)
+            .then(function (data) {
+                console.log(data);
+                data.data.forEach(function (iteam) {
+                    var status = document.querySelector('#statu')
+                    var oput = `
+                        <option value="${iteam.id}">${iteam.name}</option>`
+                    status.innerHTML += oput;
+                })
+            })
+    }
+    status();
+    // thêm dữ liệu
+    function add() {
+        var a = document.querySelector('#name').value;
+        var b = document.querySelector('#email').value;
+        var d = document.querySelector('#trangthai').value;
+        var c = document.querySelector('#statu').value;
+        if (a == "" || b == "" || c == "" || d == "") {
+            alert("bạn cần nhập đủ các trường");
+        } else {
+            var opt = {
+                url: "http://localhost:3000/users",
+                method: "POST",
+                data: {
+                    name: a,
+                    email: b,
+                    status: d,
+                    roles: c
+                }
+            }
+            axios(opt)
+                .then(function (data) {
+                    var array = [];
+                    array.push(data);
+                })
+                .then(() => location.reload());
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="">Họ và tên</label>
+        <input type="text" id="ho_ten">
+    </div>
+    <div>
+        <label for="">Môn học</label>
+        <input type="text" id="mon_hoc">
+    </div>
+    <div id="form_lab1" style="display: none;">
+        <label for="">Lab1</label>
+        <input type="text" id="lab1">
+    </div>
+    <div id="form_lab2" style="display: none;">
+        <label for="">Lab2</label>
+        <input type="text" id="lab2">
+    </div>
+    <div id="form_lab3" style="display: none;">
+        <label for="">Lab3</label>
+        <input type="text" id="lab3">
+    </div>
+    <div id="form_final" style="display: none;">
+        <label for="">Final</label>
+        <input type="text" id="final">
+    </div>
+    <button onclick="addPoint()">Gửi</button>
+    <span id="alert"></span>
+    <h1 class="point"></h1>
+    <script>
+        function lab(name_id,time) {
+                return new Promise(function(resolve, reject) {
+                    setTimeout(function() {
+                        name_id.style.display = 'block';
+                        resolve();
+                    }, time);
+                })
+            }
+        function addPoint() {
+            document.querySelector("button").setAttribute("onclick", "submitPoint()");
+            var alert = document.getElementById("alert");
+            var form_lab1 = document.getElementById("form_lab1");
+            var form_lab2 = document.getElementById("form_lab2");
+            var form_lab3 = document.getElementById("form_lab3");
+            var form_final = document.getElementById("form_final");
+            var ho_ten = document.getElementById("ho_ten");
+            var mon_hoc = document.getElementById("mon_hoc");
+            if (ho_ten.value == "" || mon_hoc.value == "") {
+                alert.style.color = "red";
+                alert.innerText = "Bạn điền thiếu !";
+                return false;
+            }else{
+                alert.innerText = "";
+            }
+            lab(form_lab1,0)
+            .then(function () {
+                lab(form_lab2,3000)
+            })
+            .then(function () {
+                lab(form_lab3,3000)
+            })
+            .then(function () {
+                lab(form_final,3000)
+            })
+        }
+        function submitPoint() {
+            var lab1 = document.getElementById("lab1");
+            var lab2 = document.getElementById("lab2");
+            var lab3 = document.getElementById("lab3");
+            var final = document.getElementById("final");
+            var point = document.querySelector('.point');
+            var diem = 0;
+            diem = ((lab1.value * 0.1) + (lab2.value * 0.2) + (lab3.value * 0.3) + (final.value * 0.4));
+            if (diem < 5) {
+                point.innerText = "Học lực yếu";
+            }else if (5 <= diem && diem < 7) {
+                point.innerText = "Học lực trung bình khá";
+            }else if(7 <= diem && diem < 8.5){
+                point.innerText = "Học lực khá";
+            }else if(8.5 <= diem && diem <= 10){
+                point.innerText = "Học lực giỏi";
+            }
+        }
+    </script>
+</body>
+</html>

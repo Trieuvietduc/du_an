@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="">email</label><br>
+        <input type="text" name="ht">
+        <label for="">mk</label><br>
+        <input type="text" name="email"><br>
+        <p id="msg">họ tên</p>
+    </form>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(() => {
+            // đổi màu
+            $('input[name=ht]').focus(function() {
+                    console.log($(this));
+                    $(this).css('background', 'red');
+                    $(this).css('width', '200px');
+                })
+                // mất màu
+            $('input[name=ht]').blur(function() {
+                    $(this).css('background', 'none');
+                    $(this).css('width', 'auto');
+                })
+                // viết họ tên và sổ xuống
+            $('input[name=ht]').keyup(function() {
+                // lấy giá trị từ ô text
+                t = $(this).val();
+                console.log(t);
+                $('#msg').html(t); // gán chuối html vào trong thể p;
+            })
+        })
+    </script>
+</body>
+
+</html>

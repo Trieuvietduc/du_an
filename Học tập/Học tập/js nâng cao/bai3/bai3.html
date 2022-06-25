@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function student(fullname, Age, phone, address, birthday) {
+            this.fullname = fullname;
+            this.Age = Age;
+            this.phone = phone;
+            this.address = address;
+            this.birthday = birthday;
+            this.Subjects = [
+                this.name,
+                this.Teacher,
+                this.point,
+                this.Year
+            ];
+            this.run = function () {
+                console.log(this.fullname + " is running");
+            }
+            this.getAvgSore = function () {
+                console.log(this.point);
+            }
+            this.setAvgSore = function (point) {
+                this.point = point;
+            };
+            this.setSubject = function (name, teacher, point, year) {
+                this.name = name;
+                this.Teacher =teacher;
+                this.point = point;
+                this.Year = year
+            }
+            this.changeAddress = function (address) {
+                this.address = address;
+            };
+        };
+        function Studentpoly(fullname, Age, phone, address, birthday) {
+            this.super_ = student;
+            this.super_.call(this, name);
+        }
+        var sv = new Studentpoly('trieu viet duc', 19, 0977573628, 'Yb', '11/09/2002');
+        sv.run();
+        sv.setAvgSore(9);
+        sv.changeAddress('Hà Nội');
+        sv.getAvgSore();
+        sv.setSubject('sondt','JS',8,"2022");
+        console.log(sv);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="" class="form-user">
+        full name <input type="text" name="fullname" id="fullname"><br>
+        email <input type="text" name="email" id="email"><br>
+        mật khẩu<input type="text" name="password" id="password"><br>
+       <input type="hidden" id="id"><br>
+        <button onclick="SaveNew()" id="add">add</button>
+        <button onclick="sua()" style="display:none" id="edit" type="button">Edit</button>
+    </form>
+    <table border="1px" id="table-user">
+        <thead>
+            <td>full name</td>
+            <td>email</td>
+            <td>Mật khẩu</td>
+            <td>thao tác</td>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        var url = 'http://localhost:3000/users';
+        var edit = document.querySelector('#form-edit .form-user');
+        var opt = {
+            method: 'GET',
+        };
+        fetch(url, opt)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                data.forEach(function (item) {
+                    const tableUsers = document.querySelector('#table-user');
+                    console.log(item.password);
+                    const output =
+                        `<tr>
+            <td>${item.fullname}</td>
+            <td>${item.email}</td>
+            <td>${item.password}</td>
+            <td><button onclick="Edit(this,'${item.id}','${item.fullname}','${item.email}','${item.password}')">Edit</button>|
+                <button onclick="DeleteRow(${item.id})">Del</button></td>
+        </tr>`;
+                    tableUsers.innerHTML += output;
+                })
+            })
+        function DeleteRow(id) {
+            let url_delete = 'http://localhost:3000/users/' + id;
+            fetch(url_delete, {
+                method: "DELETE"
+            }).then(function (response) {
+                return response.json();
+            }).then(() => location.reload());
+        }
+        function SaveNew() {
+            var them = document.querySelector('.form-user');
+            var opt = {
+                url: 'http://localhost:3000/users',
+                method: 'post',
+                data: {
+                    fullname: them.fullname.value,
+                    email: them.email.value,
+                    password: them.password.value
+                }
+            }
+            //gọi hàm axios
+            axios(opt)
+                .then(function (data) {
+                    const dataArr = [];
+                    dataArr.push(data);
+                })
+            // .then(() => location.reload());
+        }
+        function Edit(element,id, fullname, email, password) {
+            console.log( fullname, email, password);
+            document.getElementById('edit').style.display = 'inline-block';
+            document.getElementById('add').style.display = 'none';
+            const a = document.querySelector('#fullname').value = fullname;
+            const c = document.querySelector('#email').value = email;
+            const d = document.querySelector('#password').value = password;
+            const e = document.querySelector('#id').value =id;
+            // const btn = document.getElementById('edit').setAttribute('onclick', 'sua(' + id + ')');
+            opt = {
+                url: 'http://localhost:3000/users/' + id,
+                method: 'put', // phương thức để sửa
+                data: {
+                    fullname: a,
+                    email: c,
+                    password: d
+                }
+            }
+        }
+        function sua() {
+
+            const a = document.querySelector('#fullname').value;
+            const c = document.querySelector('#email').value;
+            const d = document.querySelector('#password').value;
+            const e = document.querySelector('#id').value;
+            document.getElementById('edit').style.display = 'none';
+            document.getElementById('add').style.display = 'inline-block';
+            otp = {
+                url: 'http://localhost:3000/users/' + e,
+                method: 'put',
+
+                data: {
+                    fullname: a,
+                    email: c,
+                    password: d
+                }
+            }
+            axios(otp)
+                .then(() => location.reload());
+        }
+    </script>
+</body>
+
+</html>

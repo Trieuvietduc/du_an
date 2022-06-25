@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kt1</title>
+    <style>
+        p {
+            color: red;
+        }
+
+        .aa {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="">tên xe</label>
+    <input type="text" name="" id="ten_xe"><br>
+    <p id="erorr1"></p><br>
+    <label for="">biển xe</label>
+    <input type="text" name="" id="bien_xe"><br>
+    <p id="erorr2"></p><br>
+    <label for="">ngày nhận</label>
+    <input type="date" name="" id="nguoi_nhan"><br>
+    <p id="erorr3"></p><br>
+    <ul id="ket_qua">
+    </ul>
+    <button type="button" onclick="add()">thêm</button>
+    <script>
+        var ten_xe = document.querySelector("#ten_xe");
+        var bien_xe = document.querySelector("#bien_xe");
+        var ngay_nhan = document.querySelector("#nguoi_nhan");
+        var erorr1 = document.querySelector("#erorr1");
+        var erorr2 = document.querySelector("#erorr2");
+        var erorr3 = document.querySelector("#erorr3");
+        var check_ten = /^[0-9a-zA-Z- ]{3,100}$/gm;
+        var check_bien_xe = /^(0-9|A-Z)+ [-] + ([0-4])$/;
+        var ds_xe = new Object();
+        ds_xe.kq = [];
+        function add() {
+            if (ten_xe.value == "") {
+                ten_xe.style.border = "1px solid red";
+                erorr1.innerHTML = "tên xe không được để trống";
+
+            } else {
+                ten_xe.style.border = "2px solid green";
+                erorr1.innerHTML = "";
+            }
+            if (ten_xe.value == check_ten.test(ten_xe)) {
+                ten_xe.style.border = "1px solid red";
+                erorr1.innerHTML = "tên xe không hợp lệ";
+            } else {
+                ten_xe.style.border = "2px solid green";
+                erorr1.innerHTML = "";
+            }
+            if (bien_xe.value == "") {
+                bien_xe.style.border = "1px solid red";
+                erorr2.innerHTML = "biển xe không được để trống";
+            } else {
+                bien_xe.style.border = "2px solid green";
+                erorr2.innerHTML = "";
+            }
+            if (bien_xe.value == check_bien_xe.test(bien_xe)) {
+                bien_xe.style.border = "1px solid red";
+                erorr2.innerHTML = "biển xe không đúng định dạng";
+            } else {
+                bien_xe.style.border = "2px solid green";
+                erorr2.innerHTML = "";
+            }
+            if (ngay_nhan.value == "") {
+                ngay_nhan.style.border = "1px solid red";
+                erorr3.innerHTML = "biển xe không đc để trống";
+            } else {
+                ngay_nhan.style.border = "2px solid green";
+                erorr3.innerHTML = "";
+            }
+            var obj = { ten_xe: ten_xe.value, bien_xe: bien_xe.value, ngay_nhan: ngay_nhan.value };
+            ds_xe.kq.push(obj);
+            list_li = ds_xe.kq.map(function (val) {
+                return "<li>" + val.ten_xe + " - " + val.bien_xe + "-" + val.ngay_nhan + "</li>";
+            });
+            ket_qua.innerHTML = list_li.join("");
+            console.log(ket_qua);
+
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "name": "Javier Sipes",
+      "image": "https://media-cdn.laodong.vn/Storage/NewsPortal/2021/5/26/913299/Ngan-Ha25.jpg",
+      "cate_id": "22",
+      "price": "1111111111",
+      "id": 4
+    },
+    {
+      "name": "Aryanna Bartell",
+      "image": "https://media-cdn.laodong.vn/Storage/NewsPortal/2021/5/26/913299/Ngan-Ha25.jpg",
+      "cate_id": "22",
+      "price": "1111111111",
+      "id": 5
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

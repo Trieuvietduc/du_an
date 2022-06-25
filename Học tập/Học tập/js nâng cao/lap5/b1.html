@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ThucDay(ViecTiepTheo) {
+            console.log(ViecTiepTheo);
+        }
+
+        function DanhRang(ViecTiepTheo, callback) {
+            callback(ViecTiepTheo);
+        }
+
+        function ThayQuanAo(ViecTiepTheo, callback) {
+            callback(ViecTiepTheo);
+        }
+
+        function DiHoc(ViecTiepTheo, callback) {
+            callback(ViecTiepTheo);
+        }
+        DanhRang(ThucDay("b1. đã ngủ đậy"), (result) => console.log("đamg đánh răng"));
+        ThayQuanAo(DanhRang("đã đánh răng xong", (result) => console.log(result)), (result) => console.log("đang thay quần áo"));
+        DiHoc(ThayQuanAo("Thay quần áo xong", (result) => console.log(result)), (result) => console.log("đi học"));
+    </script>
+</body>
+
+</html>

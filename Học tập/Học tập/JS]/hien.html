@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <a href="them.html">thêm</a>
+    <table class="form" border="1px">
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>email</td>
+                <td>status</td>
+                <td colspan="2">chức nâng</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var opt = {
+            url: "http://localhost:3000/users",
+            method: "GET",
+        }
+        axios(opt)
+            .then(function (response) {
+                response.data.forEach(function (iteam) {
+                    var array = document.querySelector('.form')
+                    output = `
+                    <tr>
+                <td>${iteam.name}</td>
+                <td>${iteam.email}</td>
+                <td>${iteam.status}</td>
+                <td><a href="xua.html?id=${iteam.id}">xửa<a/></td>
+                <td><button onclick="xoa(${iteam.id})">xoa</button></td>
+                
+            </tr>`
+                    array.innerHTML += output;
+                });
+            })
+        function xoa(id) {
+            var opt = {
+                url: "http://localhost:3000/users/" + id,
+                method: "DELETE",
+            }
+            axios(opt).then(() => location.reload())
+        }
+    </script>
+</body>
+
+</html>

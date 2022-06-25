@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var sv = {
+            id: 'ph14838',
+            fullname: 'Triệu Việt Đức',
+            email: 'ductvph14838@gmail.com',
+            avatar: '....',
+            study_major: 'web',
+            avgScore: '10',
+    
+
+            getAvgScore: function () {
+                if (this.avgScore < 5) {
+                    console.log('học lực yếu' + this.avgScore + "điểm");
+                } else
+                    if (this.avgScore >= 5 && this.avgScore < 7) {
+                        console.log('học lực trung bình' + this.avgScore + "điểm");
+                    } else
+                        if (this.avgScore >= 7 && this.avgScore < 8) {
+                            console.log('học lực khá' + this.avgScore + "điểm");
+                        } else
+                            if (this.avgScore >= 8 && this.avgScore <=10) {
+                                console.log('học lực giỏi'+" " + this.avgScore + "điểm");
+                            }
+
+            },
+            setAvgScore: function(point){
+                this.point = '8';
+                if (this.point < 5) {
+                    console.log('học lực yếu' + this.point + 'điểm');
+                } else
+                    if (this.point >= 5 && this.point < 7) {
+                        console.log('học lực trung bình' + this.point + 'điểm');
+                    } else
+                        if (this.pointScore < 8) {
+                            console.log('học lực khá' + this.point + 'điểm');
+                        } else
+                            if (this.point >= 8 && this.point <=10) {
+                                console.log('học lực giỏi'+" " + this.point + 'điểm');
+                            }
+            },
+            setAvgchangeAddress: function(address){
+                this.address = 'yên bái';
+               console.log( 'địa chỉ'+" " + this.address);
+            }
+
+
+        }
+        console.log(sv);
+        sv.getAvgScore();
+        sv.setAvgScore(); + "điểm"
+        sv.setAvgchangeAddress();
+    </script>
+</body>
+
+</html>

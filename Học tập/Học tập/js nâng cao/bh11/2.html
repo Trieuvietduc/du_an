@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://saophaixoan.net</title>
+    <style>
+        th {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="ds-u" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <script>
+        var url = "http://localhost:3000/users";
+
+        fetch(url, {
+            method: "GET"
+        }).then(function(res) {
+            return res.json(); // chuyển chuỗi nhận được thành đối tượng json
+        }).then(function(data) {
+            // các lệnh xử lý cho dữ liệu ở đây: các công việc hiển thị.
+            console.log(data);
+
+            //duyệt mảng và tạo các element cho vào bảng
+
+            var bang = document.querySelector('#ds-u');
+            for (i = 0; i < data.length; i++) {
+                var obj = data[i];
+                // Tạo thêm 1 dòng ở cuối bảng bằng cú pháp sau
+                let dong_moi = bang.insertRow(-1);
+
+                // Thêm ô thứ nhất, chỉ số thứ tự là 0, ô này dùng để hiển thị ID
+                let o1 = dong_moi.insertCell(0);
+                o1.innerText = obj.id;
+
+                // Thêm ô thứ hai, chỉ số thứ tự là 1, ô này dùng để hiển thị username
+                let o2 = dong_moi.insertCell(1);
+                o2.innerText = obj.username;
+
+                // Thêm ô thứ ba, chỉ số thứ tự là 2, ô này dùng để hiển thị fullname
+                let o3 = dong_moi.insertCell(2);
+                o3.innerText = obj.fullname;
+
+                // Thêm ô thứ bốn, chỉ số thứ tự là 3, ô này dùng để hiển thị email
+                let o4 = dong_moi.insertCell(3);
+                o4.innerText = obj.email;
+
+                // Thêm ô thứ năm, chỉ số thứ tự là 4, ô này dùng để hiển thị nút bấm sửa và xóa
+                let o5 = dong_moi.insertCell(4);
+                // tạo nút bấm xóa:
+                var btn_xoa = document.createElement('button');
+                btn_xoa.setAttribute('type', 'button');
+                btn_xoa.innerText = "Xóa";
+                btn_xoa.setAttribute('onclick', 'DeleteRow(' + obj.id + ')') // truyền vào id user
+                o5.appendChild(btn_xoa);
+
+            }
+
+        });
+
+        function DeleteRow(id) {
+            let url_delete = 'http://localhost:3000/users/' + id;
+            fetch(url_delete, {
+                method: "DELETE"
+            }).then(function(res) {
+                return res.json(); // chuyển chuỗi nhận được thành đối tượng json
+            }).then(function(data) {
+                // các lệnh xử lý cho dữ liệu ở đây: các công việc hiển thị.
+                // console.log(data);
+                location.reload();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Dữ liệu lấy trên Server</h1>
+    <h2>Nội dung:
+        <span id="msg"> <img src="loading.gif" height="10p" /> </span>
+    </h2>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>STT</th>
+
+            </tr>
+        </thead>
+         <!-- <tbody>
+            <td id="msg" img src="loading.gif" height="10p"></td>
+        </tbody> -->
+        <tbody>
+            <td id="name1" img src="loading.gif" height="10p"></td>
+        </tbody>
+        <tbody>
+            <td id="name2" img src="loading.gif" height="10p"></td>
+        </tbody>
+       
+    </table>
+    <h3>Hết</h3>
+
+    <script>
+        var url = 'http://son.snvn.net/a.php';
+
+        fetch(url, {
+            method: "GET"
+        })
+            .then(function (rs) {
+                return rs.json(); // phần này xử lý chuyển đổi dữ liệu trả về thành json
+            })
+            .then(function (data) {
+                // đến đây có dữ liệu dạng json, có thể dùng làm mọi việc.
+                // duyệt mảng 
+                console.log(data);
+                document.querySelector("#msg").innerHTML = data[0];
+                document.querySelector("#name1").innerHTML = data[1];
+                document.querySelector("#name2").innerHTML = data[2];
+                // document.querySelector("#name").innerHTML = data[3];
+                // nhiệm vụ: Viết tiếp code trang này để hiển thị dữ liệu lên bảng.
+
+            });
+
+    </script>
+</body>
+
+</html>

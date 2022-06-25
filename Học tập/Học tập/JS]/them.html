@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="">name</label><br>
+        <input type="text" id="name"><br>
+        <label for="">email</label><br>
+        <input type="email" id="email"><br>
+        <label for="">trạng thái</label><br>
+        <input type="text" id="trangthai"><br>
+        <button onclick="add()" type="button">add</button>
+    </form>
+    <script>
+        function add() {
+            var a = document.querySelector('#name').value;
+            var b = document.querySelector('#email').value;
+            var c = document.querySelector('#trangthai').value;
+
+            var opt = {
+                url: "http://localhost:3000/users",
+                method: "POST",
+                data: {
+                    name: a,
+                    email: b,
+                    status: c
+                }
+            }
+            axios(opt)
+            .then(function(data) {
+                var array = [];
+                array.push(data);
+            }).then(()=>window.location.href="hien.html")
+        }
+    </script>
+</body>
+
+</html>

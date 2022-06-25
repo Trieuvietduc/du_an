@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bài 2</title>
+</head>
+
+<body>
+    <label for="">sebject</label>
+    <input type="text" name="name1" id="name1">
+    <label for="">point</label>
+    <input type="number" name="point" id="point">
+    <button type="button" id="btn">add</button>
+    <p id="student_name"> tên</p>
+    <p id="student_age">tuổi</p>
+    <p id="student_address">địa chỉ</p>
+    subjects :
+    <ul id="subjectst"></ul>
+    <script>
+        var name1 = document.querySelector("#name1");
+        var point = document.querySelector("#point");
+        var student_age = document.querySelector("#student_age");
+        var student_address = document.querySelector("#student_address");
+        var subjectst = document.querySelector("#subjectst");
+        var sinhvien = new Object();
+        // sinhvien.name = 'đức';
+        // sinhvien.age = 20;
+        // sinhvien.address = 'hà nội';
+        sinhvien.subjects = [
+            {
+                name1: 'javascript',
+                point: 8,
+            }
+        ];
+        btn.onclick = function () {
+            var obj = {name1: name1.value, point: point.value};
+            sinhvien.subjects.push(obj);
+            list_li = sinhvien.subjects.map(function (value){
+                return "<li>"+ value.name1 +"-"+ value.point +"</li>";
+            });
+            subjectst.innerHTML = list_li.join("");
+
+        }
+
+        console.log(sinhvien);
+        // sinhvien = new sinhvien();
+        // sinhvien.add();
+    </script>
+</body>
+
+</html>

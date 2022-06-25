@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #target{
+            border: 1px solid #000;
+            min-height: 300px;
+        }
+        .title {
+            color: red;
+            font-family: arial;
+        }
+    </style>
+    <body>
+        <div id="target">
+    
+        </div>
+        <script>
+            var target = document.querySelector('#target');
+            var h2El = document.createElement('h2');
+            h2El.innerHTML = "hello polytechnic";
+            h2El.setAttribute("class","title")
+            target.appendChild(h2El);
+        </script>
+</body>
+</html>

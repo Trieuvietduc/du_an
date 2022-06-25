@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "name": "sóng viền",
+      "email": "ductvph14838@fpt.edu.vn",
+      "status": "đã đóng",
+      "id": 3
+    },
+    {
+      "name": "sóng viền hàn quốc",
+      "email": "ductvph14838@fpt.edu.vn",
+      "status": "đang hoạt động",
+      "id": 4
+    },
+    {
+      "name": "qizzz1111111",
+      "email": "lon@gmail.com><br>                <label for=",
+      "status": "đang hoạt động",
+      "id": 5
+    },
+    {
+      "name": "sóng viền hàn quốc",
+      "email": "ductvph14838@fpt.edu.vn",
+      "status": "đang hoạt động",
+      "id": 6
+    }
+  ]
+}

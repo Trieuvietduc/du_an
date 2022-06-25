@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function nguoi(hoten,tuoi){
+            this.hoten = hoten;
+            this.tuoi = tuoi;
+            this.inthongtin = function(){
+                console.log('họ tên'+ this.hoten + 'tuổi' + this.tuoi);
+            }
+        }
+        function sinhvien(hotensv,tuoisv,diem,masv){
+            nguoi.call(this,hotensv,tuoisv);
+            this.masv = masv;
+            this.diem = diem;
+            this.insinhvien = function(){
+                this.inthongtin(); // in ra thông tin
+                console.log('mã sinh viên'+ this.masv + 'điểm' + this.diem);
+            }
+        }
+        sv1 = new sinhvien("nguyễn văn a",23,9,"ph1167");
+        sv2 = new sinhvien("nguyễn văn b",23,9,"ph6666");
+        sv1.insinhvien();
+        sv2.insinhvien();
+        document.write(sv1.hoten);
+    </script>
+</body>
+</html>

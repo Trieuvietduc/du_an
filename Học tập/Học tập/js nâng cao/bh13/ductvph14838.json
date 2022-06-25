@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "đức",
+      "password": "123",
+      "fullname": "Triệu đức",
+      "email": "1@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "hiếu",
+      "password": "123",
+      "fullname": "đàm hiếu",
+      "email": "2@gmail.com"
+    },
+    {
+      "name": "",
+      "password": "",
+      "fullname": "",
+      "email": "",
+      "id": 3
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "quần lót",
+      "amount": "100",
+      "avatar": "https://metricleo.com/wp-content/uploads/2021/03/word-image-23.jpeg",
+      "price": "100000"
+    },
+    {
+      "id": 2,
+      "name": "áo ngực",
+      "amount": "100",
+      "avatar": "https://metricleo.com/wp-content/uploads/2021/03/word-image-23.jpeg",
+      "price": "100000"
+    }
+    
+  ]
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var chuoi_json = '{"masv": "ph14838","hoten": "trieuduc","tuoi": "20"}'
+        console.log(chuoi_json);
+        var obj = JSON.parse(chuoi_json);
+        console.log(obj);
+        console.log(obj.hoten);
+        obj.lop = "web";
+        console.log(obj.lop);
+        // chuyển thành chuối
+        chuoi2 = JSON.stringify(chuoi_json);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var sv = {
+            ma_sinh_vien: 'ph14838',
+            hoTen: 'Triệu Việt Đức',
+            lop: 'web16305',
+            ngay_nhap_hoc: '09/10/2018',
+            diem_trung_binh: '10',
+
+            tinhHocLuc: function () {
+                if (this.diem_trung_binh < 5) {
+                    console.log('học lực yếu' + this.diem_trung_binh);
+                } else
+                    if (this.diem_trung_binh >= 5 && this.diem_trung_binh < 7) {
+                        console.log('học lực trung bình' + this.diem_trung_binh);
+                    } else
+                        if (this.diem_trung_binh >= 7 && this.diem_trung_binh < 8) {
+                            console.log('học lực khá' + this.diem_trung_binh);
+                        } else
+                            if (this.diem_trung_binh >= 8 && this.diem_trung_binh <=10) {
+                                console.log('học lực giỏi' + this.diem_trung_binh);
+                            }
+
+            },
+            thoiGianRaTruong: function(){
+               console.log(this.thoiGianRaTruong)
+            }
+
+
+        }
+        console.log(sv);
+        sv.tinhHocLuc();
+        sv.thoiGianRaTruong();
+    </script>
+</body>
+
+</html>

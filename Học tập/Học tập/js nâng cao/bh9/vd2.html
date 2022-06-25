@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    // sau thời gian 5s thì ghi log
+    var prm = new Promise(  function( resolve, reject){
+            // reject(); // promise bị hủy 
+            // resolve();// promise hoàn thành công việc
+            setTimeout(() => {
+                resolve("Kết quả hoàn thành sau 5 giây");
+            }, 1000);
+    }).then( function (data){
+        // kết quả trả về
+        console.log(data);
+       
+    } )
+    prm.then( function (){
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log(1);
+                return resolve();
+            }, 1000);
+        })
+    })
+    .then( function (){
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log(2);
+                return resolve();
+            }, 4000);
+        })
+    })
+    .then( function (){
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log(3);
+                return resolve();
+            }, 2000);
+        })
+    })
+     
+    console.log(prm);
+
+    //============================
+  
+
+</script>
+
+</body>
+</html>

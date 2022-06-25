@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ngay_thang" placeholder="">
+    <button id="check_time">Check</button>
+    <h2>Ngày tháng được đổi là: <span id="hien_thi"></span></h2>
+    <script>
+        var ngay_thang = document.getElementById("ngay_thang");
+        var check_time = document.getElementById("check_time");
+        var hien_thi = document.getElementById("hien_thi");
+        check_time.onclick = function() {
+            tach = ngay_thang.value.split('/');
+            dao = tach.reverse();
+            hien_thi.innerHTML = dao.join("-");
+        }
+    </script>
+</body>
+</html>

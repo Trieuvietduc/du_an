@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="">
+    <button type="button" id="check">check</button>
+    <br>
+    <h2>chuối đảo ngược: <span id="output"></span></h2>
+    <h2>đảo thời gian: <span id="outputtime"></span></h2>
+    <h2>kết quả: <span id="result"></span></h2>
+    <script>
+        var input =document.querySelector("#input");
+        var output =document.querySelector("#output");
+        var result =document.querySelector("#result");
+        var button = document.querySelector("#check");
+        button.onclick=function(){
+            var inputvalue = input.value;
+            if(inputvalue !==""){
+                // chuyển chuối giá trị về mảng
+                var str2Array = inputvalue.split("");
+                console.log(str2Array);
+                // đảo ngược dòng
+                resect = str2Array.reverse();
+                console.log(resect);
+                // ghép mảng lại thành chuối
+                var outputvalue = resect.join("");
+                output.innerText = outputvalue;
+                console.log(outputvalue);
+                // kiểu tra giá chị gốc và giá trị khi đảo ngược
+                if(outputvalue == inputvalue){
+                    result.innerText = "chuối là";
+                }else{
+                    result.innerText = "không phải chuối";
+                }
+            }
+            
+        }
+        button.onclick=function(){
+            
+        }
+    </script>
+</body>
+</html>

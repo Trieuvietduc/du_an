@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">kiểm tra</label>
+    <form action="" method="post">
+        tài khoản <input type="text" name="name"> <span id="erorr"></span><br>
+        password <input type="text" name="pass"> <span id="erorr1"></span>
+        <button type="button">check</button>
+    </form>
+    <script>
+        var btn = document.querySelector('#button');
+        var use = document.querySelector('input[name=name]').value;
+        var pass = document.querySelector('input[name=pass]').value;
+        var erorr = document.querySelector('#erorr');
+        var erorr1 = document.querySelector('#erorr1');
+        var bt = /[a-zA-Z0-9]/;
+        // btn.onclick = function(){
+        if(bt.test(use)){
+            erorr.innerHTML = "sai";
+        }else{
+            erorr.innerHTML = "đúng";
+        }
+        if(bt.test(pass)){
+            erorr1.innerHTML = "sai";
+        }else{
+            erorr1.innerHTML = "đúng";
+        }
+    // }
+    </script>
+</body>
+</html>

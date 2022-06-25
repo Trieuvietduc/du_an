@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <table border="1" id="table-user">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FULL NAME</th>
+                <th>USER NAME</th>
+                <th>EMAIL</th>
+                <th>GROUP NAME</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        var opt ={
+            url: 'http://localhost:3000/users?_expand=group',
+            method: 'GET',
+        }   
+        axios(opt)
+            .then(function (response) {
+                return response.json();
+                console.log(response);
+            })
+            .then(function (data) {
+                data.forEach(function (item) {
+                    const tableUsers = document.querySelector('#table-user');
+                    const output =
+                        `<tr>
+                            <td>${item.id}</td>
+                            <td>${item.name}</td>
+                            <td>${item.fullname}</td>
+                            <td>${item.email}</td>
+                            <td>${item.group.name}</td>
+                        </tr>`;
+                    tableUsers.insertAdjacentHTML('beforeend', output);
+                    //insertAdjacentHTML chèn các node vào các vị trí xác định, vị trí này được chỉ định bởi tham số của hàm.
+                });
+            })
+    </script>
+</body>
+
+</html>

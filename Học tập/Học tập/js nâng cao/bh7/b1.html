@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="can_nang" placeholder="nhập cân nặng"> <br>
+    <input type="text" id="chieu_cao" placeholder="nhập chiều cao"> <br>
+    <button type="button" id="btn">Enter</button>
+    <p id="kq"></p>
+    <script>
+        var can_nang = document.querySelector("#can_nang");
+        var chieu_cao = document.querySelector("#chieu_cao");
+        var btn = document.querySelector("#btn")
+        var mang = [];
+        btn.onclick = function () {
+            x = can_nang.value;
+            y = chieu_cao.value;        
+            kq.innerHTML = x / (y * 2) + "<br>";
+            // mang.push(x / (y * 2) + "<br>" + mang.join(" "));
+            console.log(kq);
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user_id{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul id="target">
+      
+        <div class="user_id"></div>
+    </ul>
+
+    <script>
+        var mang = [
+                {id: 1, name: 'VIỆT NAM', gt: 'nam'},
+                {id: 2, name: 'TRUNG QUỐC', gt: 'nam'},
+                {id: 3, name: 'MALAISIA', gt: 'nu'},
+                {id: 4, name: 'PHILIPIN', gt: 'nam'},
+        ]
+        var ds_nu = mang.filter(  function(val, index){
+            return val.gt == "nu";         
+        })
+        console.log(ds_nu);
+        var target = document.querySelector("#target");
+        list_li = mang.forEach( function(val){
+            var targetli = document.createElement("li");
+            targetli.setAttribute("class", "user_id");
+            targetli.innerText= (val.id +'-'+ val.name + '-' + val.gt);
+            target.appendChild(targetli);
+        
+        });
+        
+       
+        
+    </script>
+</body>
+</html>

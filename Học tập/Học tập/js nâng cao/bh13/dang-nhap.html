@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="">Email</label><br>
+        <input type="email" id="name"><br>
+        <label for="">Passwork</label><br>
+        <input type="password" id="passwork"><br>
+        <button id="btn" type="button">login</button>
+    </form>
+    <script>
+        var opt = {
+            url: 'http://localhost:3000/users',
+            method: 'GET',
+        };
+        axios(opt)
+            .then(function (data) {
+                console.log(data.data[0].email);
+                data.data.forEach(function (item) {
+                    console.log(item.email);
+                    var email = document.querySelector("#name");
+                    var passwork = document.querySelector("#passwork");
+                    var btn = document.querySelector("#btn");
+                    btn.onclick = function () {
+                        if (email.value == item.email && passwork.value == item.password) {
+                            // alert('đăng nhập thành công')
+                            console.log('thành công');
+                            // window.location = "file:///C:/Users/Admin/Desktop/asm/backend/index.html";
+                        } else {
+                            // alert('đăng nhập thất bại')
+                            console.log('Thất bại');
+                        }
+                    }
+                })
+            })
+    </script>
+</body>
+
+</html>

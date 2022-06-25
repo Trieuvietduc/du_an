@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "name": "lập trình ",
+      "email": "lon@gmail.com",
+      "status": "đang hoạt động",
+      "roles": "1",
+      "id": 11
+    },
+    {
+      "name": "sóng viền hàn quốc",
+      "email": "ductvph14838@fpt.edu.vn",
+      "status": "đang hoạt động",
+      "roles": "2",
+      "id": 13
+    },
+    {
+      "name": "đức",
+      "email": "ductvph14838@fpt.edu.vn",
+      "status": "đang hoạt động",
+      "roles": "3",
+      "id": 14
+    },
+    {
+      "name": "qizzz4",
+      "email": "1@gmail.com",
+      "status": "đang hoạt động",
+      "roles": "3",
+      "id": 15
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Admin"
+    },
+    {
+      "id": "2",
+      "name": "Member"
+    },
+    {
+      "id": "3",
+      "name": "Author"
+    }
+  ]
+}

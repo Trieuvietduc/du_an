@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css" media="screen">
+    .user_item{
+        color: green;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="form">
+        <div>
+            <label for="">ID</label>
+            <input type="number" id="addUserID" value="" placeholder="Auto Number" disabled>
+        </div>
+        <div>
+            <label for="">Name</label>
+            <input type="text" id="addUserText" value="" placeholder="Full Name">
+        </div>
+        <div>
+            <label for="">Gender</label>
+            <select id="addUserGender">
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
+            </select>
+        </div>
+        <button type="submit" id="addAction" onclick="them()">Add</button>
+    </div>
+    <table id="target" border="1">
+    </table>
+    <script>
+        var users = [
+            {id: 1, name:"James Smith", gender: 1},
+            {id: 2, name:"Isla Brown", gender: 2},
+            {id: 3, name:"Amelia Davies", gender: 2},
+            {id: 4, name:"Jacob Evans", gender: 2},
+        ];
+        var target = document.querySelector("#target");
+            list_li = users.map( function(value){
+                if (value.gender == 1) {
+                    value.gender = "Nam"
+                }else if(value.gender == 2){
+                    value.gender = "Nữ"
+                } 
+                    return '<tbody><tr>' + '<td>'+value.id +'</td>' + '<td>'+value.name +'</td>' + '<td>'+value.gender +'</td>' + '<td><button onclick="xoa('+value.id+')">XÓA</button></td>' + '</tr></tbody>';
+            });
+            target.innerHTML =  `<thead>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>NAME</td>
+                                        <td>GENDER</td>
+                                        <td>FUNCTION</td>
+                                    </tr>
+                                </thead>` + list_li.join("");
+                                console.log(target);
+            function show() {
+                var target = document.querySelector("#target");
+                list_li = users.map( function(value){
+                    if (value.gender == 1) {
+                        value.gender = "Nam"
+                    }else if(value.gender == 2){
+                        value.gender = "Nữ"
+                    } 
+                        return '<tbody><tr>' + '<td>'+value.id +'</td>' + '<td>'+value.name +'</td>' + '<td>'+value.gender +'</td>' + '<td><button onclick="xoa('+value.id+')">XÓA</button></td>' + '</tr></tbody>';
+                });
+                target.innerHTML =  `<thead>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>NAME</td>
+                                            <td>GENDER</td>
+                                            <td>FUNCTION</td>
+                                        </tr>
+                                    </thead>` + list_li.join("");
+            }
+            console.log(target);
+            function them() {
+                var id_max = users.length;
+                var ma = document.getElementById("addUserID").value;
+                ma = id_max + 1;
+                var ho_ten = document.getElementById("addUserText").value;
+                var gioi_tinh = document.getElementById("addUserGender").value;
+                var obj = {id:ma, name:ho_ten, gender:gioi_tinh};
+                users.push(obj);
+                console.log(obj);
+                show();
+                // reset();
+            }
+            function xoa(ma) {
+                for (let i = 0; i < users.length; i++) {
+                    if (users[i].id == ma) {
+                        users.splice(i, 1);
+                        show();
+                    }
+                }
+            }
+            function reset() {
+                document.getElementById("addUserText").value = "";
+            }
+    </script>
+</body>
+</html>

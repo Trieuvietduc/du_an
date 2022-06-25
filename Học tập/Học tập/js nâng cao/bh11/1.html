@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>LIST USER</h2>
+        <!-- Button trigger modal -->
+        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Register User
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Register New User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- thêm -->
+                    <div class="modal-body">
+                        <form class="form-user">
+                            <div class="form-group">
+                                <label>FullName</label>
+                                <input type="text"  class="form-control" name="fullname" placeholder="Enter Fullname" >
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="file" class="form-control" name="image" placeholder="Enter Phone" >
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter Email" >
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" class="form-control" name="cate_id" placeholder="Enter age" >
+                            </div> -->
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="gender" checked="checked" value="true">Male</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="gender"  value="false">Female</label>
+                                </div>
+                            </div>
+                            <button onclick="SaveNew()" type="button" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="form-edit" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Edit form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- sửa -->
+                    <div class="modal-body">
+                        <form class="form-user">
+                            <div class="form-group">
+                                <label>FullName</label>
+                                <input id="fullname" type="text"  class="form-control" name="fullname" placeholder="Enter Fullname" >
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input id="image" type="file" class="form-control" name="image" placeholder="Enter Phone" >
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input id="email" type="email" class="form-control" name="email" placeholder="Enter Email" >
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio">
+                                    <label class="checkbox-inline">
+                                        <input  type="radio" name="gender" checked="checked" value="true">nam</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="gender"  value="false">nữ</label>
+                                </div>
+                            </div>
+                            <button class="sua" type="button" onclick="sua()"  class="btn btn-primary">Edit</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <table id="table-user" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>id</td>
+                    <td>FullName</td>
+                    <td>Email</td>
+                    <td>Ảnh</td>
+                    <td>Giới Tính</td>
+                    <td colspan="2">Thao tác</td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <script src="main.js"></script>
+    
+</body>
+
+</html>

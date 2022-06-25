@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "fullname": "cccccc",
+      "image": "",
+      "email": "danang@gmail.com",
+      "id": 4
+    },
+    {
+      "fullname": "Fpoly Hà nội",
+      "image": "",
+      "email": "2@gmail.com",
+      "id": 5
+    },
+    {
+      "fullname": "Đàm Minh Hiếu",
+      "image": "",
+      "email": "đieum@gmail.com",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

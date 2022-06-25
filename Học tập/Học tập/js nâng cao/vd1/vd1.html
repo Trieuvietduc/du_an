@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ds_tk"></ul>
+
+    <script>
+        var mang = [
+                {id: 1, name: 'trieu viet duc', gt: 'nam'},
+                {id: 2, name: 'trieu viet duc', gt: 'nam'},
+                {id: 3, name: 'trieu viet duc', gt: 'nu'},
+                {id: 4, name: 'trieu viet duc', gt: 'nam'},
+        ]
+        var ds_nu = mang.filter(  function(val, index){
+            return val.gt == "nu";
+            
+        })
+        console.log(ds_nu);
+        list_li = mang.map( function(val){
+            return val.id +'-'+ val.name + '-' + val.gt;
+        })
+        console.log(list_li);
+        var ul= document.querySelector("#ds_tk");
+        ul.innerHTML = list_li.join("");
+
+    </script>
+</body>
+</html>

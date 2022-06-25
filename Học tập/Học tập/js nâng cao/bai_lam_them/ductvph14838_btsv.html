@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    mã sv: <input type="text" id="masv" placeholder="nhập mã viên"><br>
+    họ tên: <input type="text" id="ho_ten" placeholder="nhập mã viên"><br>
+    điểm: <input type="text" id="diem" placeholder="nhập mã viên"><br>
+    <button id="btn" type="button">thêm</button>
+    <table border="">
+        <thead>
+            <th><button id="intn"> mã sinh viên</button></th>
+            <th>họ tên</th>
+            <th> điểm</th>
+        </thead>
+        <tbody id="kq">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tbody>
+    </table>
+    <input type="text" id="name" placeholder="nhập tên bạn cần tìm">
+    <button type="button" id="tim">tìm kiếm</button>
+    <p id="thay">kết quả</p>
+    <script>
+        var masv = document.querySelector("#masv");
+        var ho_ten = document.querySelector("#ho_ten");
+        var diem = document.querySelector("#diem");
+        mang = [];
+
+        btn.onclick = function () {
+            if (
+                masv.value == "" || ho_ten.value == "" || diem.value == ""
+            ) {
+                alert("bạn hãy nhập đủ thông tin");
+            } else {
+                var obj = { masv: masv.value, ho_ten: ho_ten.value, diem: diem.value }
+                mang.push(obj);
+                console.log(mang);
+                list = mang.map(function (value) {
+                    return '<tbody><tr>' + '<td>' + value.masv + '</td>' + '<td>' + value.ho_ten + '</td>' + '<td>' + value.diem + '</td>' + '</tr></tbody>';
+                });
+                kq.innerHTML = list.join(" ");
+                var intn = document.querySelector("#intn");
+                intn.onclick = function () {
+                    mang = list.sort();
+                    kq.innerHTML = list.join(" ");
+                }
+                var mang1=[];
+                var tim_kiem = document.querySelector("#tim");
+                var thay = document.querySelector("#thay");
+                tim_kiem.onclick = function () {
+                    thay.innerHTML= list.filter(function (value) {
+                        return true;
+                        list.join(" ");
+                        
+                    });
+                }
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

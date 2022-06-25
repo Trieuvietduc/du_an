@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sinhvien(masv, hoten) {
+            this.masv = masv;
+            this.hoten = hoten;
+
+
+        }
+        sinhvien.prototype.inthongtin = function () {
+            console.log(this.masv + "=====" + this.hoten);
+        }
+        sv1 = new sinhvien('sv1', 'nva');
+        sv1.inthongtin();
+        // tạo đối tượng có sử dụng lại 
+        sv1 ={
+            __proto__: sinhvien,
+            masv: 'ph1111',
+            hoten: 'qqqq',
+
+        }
+    </script>
+</body>
+
+</html>

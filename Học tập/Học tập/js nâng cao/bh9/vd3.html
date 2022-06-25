@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vd3</title>
+</head>
+
+<body>
+    <h2>loading....</h2>
+    <script>
+        var h2 = document.querySelector('h2');
+        function quantrihoc(totamark, time) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (totamark >= 9) {
+                        resolve(totamark);
+                    } else {
+                        reject('không đủ điều kiện')
+                    }
+                }, time);
+            })
+        }
+        var diemtk = prompt("nhập điểm tổng kết");
+
+        var time = prompt("thời gian delay");
+        quantrihoc(parseInt(diemtk), parseInt(time))
+            .then(function (macke) {
+                h2.innerText = 'đi singapore, vì điểm tổng kết' + macke;
+            })
+            
+            .catch(function (err) {
+                h2.innerText = err;
+            })
+            console.log(quantrihoc);
+    </script>
+</body>
+
+</html>

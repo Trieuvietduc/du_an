@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <label for="">họ tên</label><br>
+    <input type="text" name="name" id="name"><br>
+    <p id="result1"></p><br>
+    <label for="">tên tài khoản</label><br>
+    <input type="text" name="" id="full_name"><br>
+    <p id="result2"></p><br>
+    <label for="">mật khẩu</label><br>
+    <input type="password" name="" id="password"><br>
+    <p id="result3"></p><br>
+    <label for="">nhập lại mật khẩu</label><br>
+    <input type="password" name="" id="new_password"><br>
+    <p id="result4"></p><br>
+    <label for="">email</label><br>
+    <input type="email" name="" id="email"><br>
+    <p id="result5"></p><br>
+    <label for="">số điện thoại</label><br>
+    <input type="number" name="" id="number"><br>
+    <p id="result6"></p><br>
+    <label for="">địa chỉ</label><br>
+    <input type="text" name="" id="addre"><br>
+    <p id="result7"></p><br>
+    <button onclick="check()">check</button>
+    <script>
+        function check() {
+            var name = document.querySelector("#name");
+            var full_name = document.querySelector("#full_name");
+            var password = document.querySelector("#password");
+            var new_password = document.querySelector("#new_password");
+            var email = document.querySelector("#email");
+            var number = document.querySelector("#number");
+            var addre = document.querySelector("#addre");
+            var bt = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/gm;
+            var check = /(09|03) + ([0-9]{8})\b/g;
+            var check_null = /\s-[a-zA-Z0-9]/;
+            var check_null1 = /\s-[a-zA-Z]/;
+            check_mail = bt.test(email.value);
+            check_number = check.test(number);
+            if (name.value == "") {
+                result1.innerHTML = "họ tên không đc để trống";
+                name.style.border = "2px solid  red";
+            } else if (name.value == check_null1.test(name)) {
+                result1.innerHTML = "họ tên không đc để trống";
+                name.style.border = "2px solid  red";
+            }
+            else {
+                result1.innerHTML = "";
+                name.style.border = "2px solid  green";
+            }
+            if (full_name.value == "") {
+                result2.innerHTML = "tài khoản không được để trống";
+                full_name.style.border = "2px solid  red";
+            } else if (full_name.value == check_null1.test(full_name)) {
+                result2.innerHTML = "tài khoản không được để trống";
+                full_name.style.border = "2px solid  red";
+            }
+            else {
+                result2.innerHTML = "";
+                full_name.style.border = "2px solid  green";
+            }
+            if (password.value == "") {
+                result3.innerHTML = "mật khẩu không được để trống";
+                password.style.border = "2px solid  red";
+            }
+            else if (password.value == check_null.test(password)) {
+                result3.innerHTML = "mật khẩu không được để trống";
+                password.style.border = "2px solid  red";
+            }
+            else {
+                result3.innerHTML = "";
+                password.style.border = "2px solid  green";
+            }
+            if (new_password.value == "") {
+                result4.innerHTML = "mật khẩu không được để trống";
+                new_password.style.border = "2px solid  red";
+            } else if (new_password.value == check_null.test(new_password)) {
+                result4.innerHTML = "mật khẩu không được để trống";
+                new_password.style.border = "2px solid  red";
+            }
+            else if (new_password.value !== password.value) {
+                result4.innerHTML = "hai mật khẩu không khớp";
+                new_password.style.border = "2px solid  red";
+            }
+            else {
+                result4.innerHTML = "";
+                new_password.style.border = "2px solid  green";
+            }
+            if (email.value == "") {
+                result5.innerHTML = "email không được để trống";
+                email.style.border = "2px solid  red";
+            }
+            else if (check_mail == false) {
+                result5.innerHTML = "email không đúng định dạng";
+                email.style.border = "2px solid  red";
+            }
+            else {
+                result5.innerHTML = "";
+                email.style.border = "2px solid  green";
+            }
+            if (number.value == "") {
+                result6.innerHTML = "số điện thoại không được để trống";
+                number.style.border = "2px solid  red";
+            }
+            else if (number.value == check_null.test(number)) {
+                result6.innerHTML = "số điện thoại không được để trống";
+                number.style.border = "2px solid  red";
+            }
+            else if (check_number == false) {
+                result6.innerHTML = "bạn nhập không đúng số điện thoại";
+                number.style.border = "2px solid  red";
+            }
+            else {
+                result6.innerHTML = "";
+                number.style.border = "2px solid  green";
+            }
+            if (addre.value == "") {
+                result7.innerHTML = "địa chỉ không được để trống";
+                addre.style.border = "2px solid  red";
+            }
+            else if (addre.value == check_null.test(addre)) {
+                result7.innerHTML = "địa chỉ không được để trống";
+                addre.style.border = "2px solid  red";
+            }
+            else {
+                result7.innerHTML = "";
+                addre.style.border = "2px solid  green";
+            }
+        }
+    </script>
+</body>
+
+</html>

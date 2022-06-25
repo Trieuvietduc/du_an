@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="form-edit">
+
+    </div>
+    <script>
+        function all() {
+            var id = window.location.search;
+            id = id.substr(4, 1);
+            var opt = {
+                url: "http://localhost:3000/users/" + id,
+                method: "GET",
+            }
+            axios(opt).then(function (data) {
+                var array = document.querySelector('.form-edit');
+                output = `
+                <form action="" method="post">
+                <label for="">name</label><br>
+                <input type="text" id="name" value="${data.data.name}"><br>
+                <label for="">email</label><br>
+                <input type="email" id="email" value="${data.data.email}"><br>
+                <label for="">trạng thái</label><br>
+                <input type="text" id="trangthai" value="${data.data.status}"><br>
+                <button onclick="xua(${data.data.id})" type="button">xua</button>
+            </form>`;
+                array.innerHTML += output;
+
+            })
+        }
+        all();
+        function xua(id) {
+            console.log(id);
+            var a = document.querySelector('#name').value;
+            var b = document.querySelector('#email').value;
+            var c = document.querySelector('#trangthai').value;
+
+            var opt = {
+                url: "http://localhost:3000/users/"+id,
+                method: "put",
+                data: {
+                    name: a,
+                    email: b,
+                    status: c
+                }
+            }
+            axios(opt).then(()=>window.location.href="hien.html");
+        }
+    </script>
+</body>
+
+</html>

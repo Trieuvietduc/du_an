@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="name" placeholder="nhập tên"><br>
+    <button id="btn">nhập</button>
+    <p id="kq"></p>
+    <script>
+        var name1 = document.querySelector("#name");
+        var mang = [];
+        btn.onclick = function () {
+            mang.push(mang1 = { name: name1.value });
+            
+            list = mang.map(function (value) {
+                return "<li>" + value.name + "</li>";
+            });
+            mang = list.sort();
+            kq.innerHTML = list.join(" ") + "<br/>";
+            console.log(mang);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

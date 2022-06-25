@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user_id{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <div>
+            <label for="">id</label>
+            <input type="number" id="addusersid" placeholder="">
+        </div>
+        <div>
+            <label for="">name</label>
+            <input type="texxt" id="adduserstext" placeholder="">
+        </div>
+        <div>
+            <label for="">gender</label>
+            <select name="" id="addussergender">
+                <option value="1">male</option>
+                <option value="2">female</option>
+            </select>
+        </div>
+        <div>
+            <button type="button" id="addaction">
+                add
+            </button>
+            
+            
+        </div>
+    </div>
+    <ul id="target">
+      
+        <div class="user_id"></div>
+        
+    </ul>
+
+    <script>
+        var mang = [
+                {id: 1, name: 'VIỆT NAM', gt: 'nam'},
+                {id: 2, name: 'TRUNG QUỐC', gt: 'nam'},
+                {id: 3, name: 'MALAISIA', gt: 'nu'},
+                {id: 4, name: 'PHILIPIN', gt: 'nam'},
+                
+        ]
+        var ds_nu = mang.filter(  function(val, index){
+            return val.gt == "nu";         
+        })
+        console.log(ds_nu);
+        var target = document.querySelector("#target");
+        list_li = mang.map( function(val){
+            var targetli = document.createElement("td");
+            
+            targetli.setAttribute("class", "user_id");
+            targetli.innerText= (val.id +'-'+ val.name + '-' + val.gt);
+            if (val.gt == 1) {
+                    val.gt = "Nam"
+                }else if(val.gt == 2){
+                    val.gt = "Nữ"
+                } 
+            target.appendChild(targetli);
+        
+        })
+        var id1 = document.getElementById("addusersid");
+        var name1 = document.getElementById("adduserstext");
+        var gender1 = document.getElementById("addussergender");
+        addaction.addEventListener("click", function(){
+            // var id_max = users.length;
+            var but = document.createElement("li");
+            if (gender1.gt == 1) {
+                gender1.gt = "Nam"
+                }else if(gender1.gt == 2){
+                    gender1.gt = "Nữ"
+                } 
+            // alert("bạn đã thêm thành công");
+            but.setAttribute("class", "user_id");
+            but.innerText= (id1.value +'-'+ name1.value + '-' + gender1.value);
+            target.appendChild(but);
+        });
+    </script>
+</body>
+</html>

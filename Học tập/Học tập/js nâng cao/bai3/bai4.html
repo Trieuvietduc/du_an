@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <label for="">1st Person name</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="">1st Person Age</label>
+            <input type="text" name="Age">
+        </div>
+        <div>
+            <label for="">1st Person address</label>
+            <input type="text" name="address">
+        </div>
+        <div>
+            <label for="">2nd Person name</label>
+            <input type="text" name="ndname">
+        </div>
+        <div>
+            <label for="">2nd Person Age</label>
+            <input type="text" name="ndAge">
+        </div>
+        <div>
+            <label for="">2nd Person address</label>
+            <input type="text" name="ndaddress">
+        </div>
+        <button type="button">show profile</button>
+    </form>
+    <script>
+        var pt = {
+            getgt: function (name, age, address) {
+                this.name = name;
+                this.age = age;
+                this.address = address;
+            },
+            showfrofile: function () {
+                document.write("Name :" + this.name + ",<br> Tuoi: " + this.age + "<br> dia chi: " + this.address +"<hr>");
+            }
+        }
+        var btn = document.querySelector('button');
+        btn.onclick = function () {
+            var name = document.querySelector('input[name=name]').value;
+            var age = document.querySelector('input[name=Age]').value;
+            var address = document.querySelector('input[name=address]').value;
+
+            var ndname = document.querySelector('input[name=ndname]').value;
+            var ndage = document.querySelector('input[name=ndAge]').value;
+            var ndaddress = document.querySelector('input[name=ndaddress]').value;
+            if (name == '' || ndname == '' || age == null || ndage == null || address == null || ndaddress == null) {
+                alert("vui long nhaapj du thong tin")
+            } else {
+                var sv = {
+                    __proto__: pt,
+                    name: name,
+                    age: age,
+                    address: address
+                };
+                var sv2 = {
+                    __proto__: pt,
+                    name: ndname,
+                    age: ndage,
+                    address: ndaddress
+                }
+                sv.showfrofile();
+                
+                sv2.showfrofile();
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

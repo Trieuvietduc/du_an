@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://saophaixoan.net</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="name" placeholder="Nhập username" /> <br>
+        <input type="file" name="image" placeholder="" /> <br>
+        <input type="text" name="cate_id" placeholder="Nhập cate_id" /><br>
+        <input type="text" name="price" placeholder="Nhập price" /><br>
+        <button type="button" onclick="SaveNew()">Save</button>
+    </form>
+    <table id="table-user" border="1">
+        <th>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>avatar</th>
+                <th>coke_id</th>
+                <th>price</th>
+                <th colspan="2">Thao tác</th>
+            </tr>
+        </th>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var url = "http://localhost:3000/users";
+        var opt = {
+            method: "GET",
+        }
+        fetch(url, opt)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                data.forEach(function (item) {
+                    const tableUsers = document.querySelector('#table-user');
+
+                    const output =
+                        `<tr'data-id=${item.id} >
+                            <td>${item.id}</td>
+                            <td>${item.name}</td>
+                            <td><img src="${item.image}" alt="" style="width:150px"></td>
+                            <td>${item.cate_id}</td>
+                            <td>${item.price}</td>
+                            <td><a onclick="update(this,${item.id})class="btn-edit btn btn-primary btn-sm"><button>Edit</button></a> |
+                                <a onclick="DeleteRow(this,${item.id})" class="btn-del btn btn-danger btn-sm"><button>Del</button></a>
+                        </tr>`;
+                    tableUsers.insertAdjacentHTML('beforeend', output);
+                    const btn = document.createElement('a');
+                    btn.setAttribute('onclick', 'btn-del');
+                    btn.setAttribute('onclick', 'DeleteRow(' + item.id + ')');
+                });
+            });
+
+        // Xóa
+        function DeleteRow(element, id) {
+            let url_delete = 'http://localhost:3000/users/' + id;
+            fetch(url_delete, {
+                method: "DELETE"
+            }).then(function (response) {
+                return response.json(); // chuyển chuỗi nhận được thành đối tượng json
+            })
+                .then(() => location.reload());
+        }
+        // thêm
+        function SaveNew() {
+            var u = document.querySelector("input[name=name]").value;
+            var n = document.querySelector("input[name=image]").value;
+            var e = document.querySelector("input[name=cate_id]").value;
+            var a = document.querySelector("input[name=price]").value;
+            // var them = document.querySelector('#table-user');
+            var opt = {
+                url: 'http://localhost:3000/users',
+                method: 'post',
+                data: {
+                    name: u,
+                    image: n,
+                    cate_id: e,
+                    price: a,
+                }
+            }
+            //gọi hàm axios
+            axios(opt)
+                .then(function (data) {
+                    const dataArr = [];
+                    dataArr.push(data);
+                })
+                .then(() => location.reload());
+        }
+    </script>
+</body>
+
+</html>
